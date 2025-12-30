@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Music Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="player" aria-label="Music player">
+    <div class="brand"><span id="playerName">rOX Player</span></div>
+    <div class="cover-wrap">
+      <img id="cover" src="" alt="Album cover" hidden>
+    </div>
+
+    <div class="details">
+      <h2 id="title"></h2>
+      <p id="artist"></p>
+    </div>
+
+    <div class="controls">
+      <button id="prev" aria-label="Previous track">⏮</button>
+      <button id="play" aria-label="Play" class="large">▶</button>
+      <button id="next" aria-label="Next track">⏭</button>
+    </div>
+
+    <div class="progress">
+      <span id="currentTime">0:00</span>
+      <div id="progressBar" class="progress-bar" role="slider" aria-valuemin="0" aria-valuemax="100" aria-label="Track progress">
+        <div id="progressFilled" class="progress-filled"></div>
+      </div>
+      <span id="duration">0:00</span>
+    </div>
+
+    <div class="extras">
+      <label class="volume" aria-label="Volume control">
+        <button type="button" class="vol-icon" id="volIcon" aria-hidden="true">🔊</button>
+        <input id="volume" class="volume-range" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+      </label>
+      <button id="repeat" aria-pressed="false" aria-label="Repeat" class="toggle-btn">🔁</button>
+    </div>
+
+    <ul id="playlist" class="playlist" aria-label="Playlist"></ul>
+    <p id="noSongs" class="no-songs">No songs found in <code>Audio/</code>. Add audio files there and run <code>node scripts/generate_playlist.js</code>, then refresh this page.</p>
+
+    <audio id="audio"></audio>
+
+    <!-- Hidden YouTube player (used when a track src is a YouTube link) -->
+    <div id="yt-player" class="yt-player" aria-hidden="true"></div>
+  </main>
+
+  <div id="watermark" aria-hidden="true">Gokul S - 7376241CS186</div>
+
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="script.js"></script>
+</body>
+</html>
